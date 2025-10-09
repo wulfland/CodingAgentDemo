@@ -1,91 +1,82 @@
-# CodinAgentDemo Repository Instructions
+# CodingAgentDemo Repository Instructions
 
 **ALWAYS** follow these instructions first and only fallback to additional search and context gathering if the information here is incomplete or found to be in error.
 
 ## Repository Overview
-This is a minimal Demo repository currently containing only basic project structure. The repository is configured for .NET development based on the comprehensive Visual Studio .gitignore file, but currently contains no source code, build scripts, or applications to run.
+This repository contains a browser-based Connect Four (4 Gewinnt) game built with vanilla HTML, CSS, and JavaScript. The game features modern animations, responsive design, and is deployed via GitHub Pages.
 
 ## Working Effectively
 
 ### Environment Setup
 The following development tools are available and validated to work:
-- .NET SDK 8.0.119 (with ASP.NET Core 8.0.19 runtime)
-- Node.js v20.19.4 with npm
+- Node.js v20.19.5 with npm
 - Python 3.12.3
 - Git 2.51.0
 
+Note: No build tools or package managers are required for the core application as it uses vanilla JavaScript.
+
 ### Current Repository State
-- **NO BUILD REQUIRED**: Repository contains no source code or build scripts
+- **NO BUILD REQUIRED**: Static HTML/CSS/JavaScript project
 - **NO TESTS TO RUN**: No test framework or test files exist
-- **NO APPLICATION TO RUN**: No executable code exists
-- Repository has standard .NET .gitignore configuration
+- **RUNS IN BROWSER**: Open index.html directly in any modern web browser
+- Repository uses Visual Studio .gitignore (legacy from initial setup)
 
 ### Repository Structure
 ```
 .
 ├── .git/                    # Git metadata  
-├── .github/                 # GitHub configuration (contains these instructions)
-│   └── copilot-instructions.md
-├── .gitignore              # Comprehensive .NET/Visual Studio gitignore
-└── README.md               # Simple "# Demo" header
+├── .github/                 # GitHub configuration
+│   ├── copilot-instructions.md
+│   └── workflows/          # GitHub Actions workflows
+├── .gitignore              # Visual Studio .gitignore (legacy)
+├── README.md               # Project documentation
+├── index.html              # Main game HTML file
+├── styles.css              # Game styling with animations
+└── game.js                 # Game logic and event handlers
 ```
 
-### When Code Is Added
-Once source code is added to this repository, typical .NET development workflows will apply:
+### Running the Game
+This is a static HTML/CSS/JavaScript project that runs directly in the browser:
 
-#### For .NET Projects
+#### Local Development
 ```bash
-# Restore dependencies (when package references exist)
-dotnet restore
+# Option 1: Open directly in browser
+# Simply open index.html in any modern web browser
 
-# Build the solution/project  
-dotnet build
-# Expected time: 15-60 seconds for small projects, up to 5 minutes for larger solutions
-# NEVER CANCEL: Set timeout to 10+ minutes for larger solutions
+# Option 2: Use a simple HTTP server (recommended for testing)
+# Python 3:
+python3 -m http.server 8000
+# Then open http://localhost:8000 in your browser
 
-# Run tests (when test projects exist)
-dotnet test
-# Expected time: 5-30 seconds for small test suites, up to 10 minutes for comprehensive suites
-# NEVER CANCEL: Set timeout to 15+ minutes for comprehensive test suites
-
-# Run the application (when executable project exists)
-dotnet run
-# Expected time: 2-10 seconds to start
+# Node.js (if http-server is installed globally):
+npx http-server -p 8000
+# Then open http://localhost:8000 in your browser
 ```
 
-#### For Node.js Projects (if added)
-```bash
-# Install dependencies (when package.json exists)
-npm install
-# Expected time: 30-60 seconds for small projects, up to 5 minutes for large projects
-# NEVER CANCEL: Set timeout to 10+ minutes
-
-# Run tests (when test scripts exist)
-npm test
-# Expected time: varies by framework
-# NEVER CANCEL: Set timeout to 15+ minutes
-
-# Start development server (when dev script exists)
-npm run dev
-```
+#### Making Changes
+- Edit `index.html` for structure changes
+- Edit `styles.css` for styling and animations
+- Edit `game.js` for game logic
+- Refresh browser to see changes (no build step needed)
 
 ### Validation Steps
-Since no code exists currently:
-- **Build validation**: Not applicable - no build to execute
-- **Test validation**: Not applicable - no tests to run  
-- **Functionality validation**: Not applicable - no application functionality exists
-
-When code is added, validation should include:
-- Successful build completion
-- All tests passing
-- Basic application functionality verification
-- Linting and formatting checks (if configured)
+For changes to this project:
+- **Visual validation**: Open index.html in browser and test gameplay
+- **Functionality validation**: 
+  - Test placing pieces in all columns
+  - Verify win detection (horizontal, vertical, diagonal)
+  - Test draw detection (full board)
+  - Verify reset functionality
+  - Check animations and visual effects
+- **Responsive testing**: Test on different screen sizes
+- **Browser compatibility**: Test in Chrome, Firefox, Safari, Edge
 
 ### Development Workflow
 1. **Check repository state**: Run `ls -la` to see current files
-2. **Verify .NET availability**: Run `dotnet --version` to confirm SDK access
-3. **When adding code**: Follow .NET project conventions and utilize existing .gitignore
-4. **Before committing**: Ensure new code builds and tests pass (once added)
+2. **Make changes**: Edit HTML, CSS, or JavaScript files as needed
+3. **Test locally**: Open/refresh index.html in browser to verify changes
+4. **Visual verification**: Play the game to ensure functionality works correctly
+5. **Before committing**: Test all game features and verify responsive design
 
 ### Common Tasks and Expected Outcomes
 
@@ -93,7 +84,7 @@ When code is added, validation should include:
 ```bash
 # List repository contents
 ls -la
-# Expected output: .git/, .github/, .gitignore, README.md
+# Expected output: .git/, .github/, .gitignore, README.md, index.html, styles.css, game.js
 
 # Check git status
 git status
@@ -101,28 +92,33 @@ git status
 
 # View README
 cat README.md
-# Expected output: "# Demo"
+# Expected output: Documentation about the Connect Four game
 ```
 
-#### Tool Verification  
+#### Running the Game Locally
 ```bash
-# Verify .NET SDK
-dotnet --version
-# Expected output: 8.0.119
+# Start a local server (recommended)
+python3 -m http.server 8000
+# Expected output: Serving HTTP on 0.0.0.0 port 8000...
+# Then open http://localhost:8000 in your browser
 
-# Check available .NET templates (for future use)
-dotnet new list
-# Expected: List of available project templates
-
-# Verify Node.js (for future use)
-node --version
-# Expected output: v20.19.4
+# Or open directly
+# Open index.html in any modern web browser
 ```
+
+#### Testing Game Features
+- Click columns to drop pieces
+- Win with 4 in a row (horizontal, vertical, or diagonal)
+- Test "Neues Spiel" (New Game) button
+- Verify animations on piece drops and wins
+- Test responsive design at different screen sizes
 
 ### Notes for GitHub Copilot Agents
-- Repository is currently in initial/template state
-- .gitignore suggests .NET development intent
-- No build, test, or run processes exist yet
-- All development tools are available and ready for use
-- Instructions should be updated when actual code and build processes are added
-- Focus changes on minimal, surgical modifications to existing structure
+- This is a pure front-end static web application
+- No build tools, transpilation, or bundling required
+- Game logic is in vanilla JavaScript (no frameworks)
+- Styling uses modern CSS with animations and gradients
+- German language UI (Spieler = Player, Neues Spiel = New Game)
+- Deployed via GitHub Pages (automatic via GitHub Actions)
+- .gitignore is from Visual Studio but not relevant to this HTML/CSS/JS project
+- Focus changes on minimal, surgical modifications to existing code
